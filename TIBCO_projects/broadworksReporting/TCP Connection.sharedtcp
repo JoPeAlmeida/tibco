@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BWSharedResource>
+    <name>TCP Connection</name>
+    <resourceType>ae.shared.TCPSharedconnection</resourceType>
+    <config>
+        <enableDNSLookup>true</enableDNSLookup>
+        <maxConnections>10</maxConnections>
+        <WhenExhaustedAction>Block</WhenExhaustedAction>
+        <maxWaitTime>10000</maxWaitTime>
+        <idleTimeout>-1</idleTimeout>
+        <Host>10.36.67.3</Host>
+        <Port>8025</Port>
+    </config>
+</BWSharedResource>

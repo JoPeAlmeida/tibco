@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ************************************************************************* -->
+<!-- Copyright (c) 2006 Broadsoft, Inc.  All rights reserved.                  -->
+<!-- ************************************************************************* -->
+<!-- O C I   R E P O R T I N G   X M L   S C H E M A                           -->
+<!--                                                                           -->
+<!-- Provisioning Task R E P O R T   N O T I F I C A T I O N                   -->
+<!--                                                                           -->
+<!-- This file defines the XML Schema for the BroadSoft OCI Reporting          -->
+<!-- Interface                                                                 -->
+<!-- ************************************************************************* -->
+
+<xs:schema xmlns:xs             = "http://www.w3.org/2001/XMLSchema"
+           xmlns                = ""
+           attributeFormDefault = "unqualified"
+           elementFormDefault   = "unqualified">
+
+  <!-- ********************************************************************************** -->
+  <!-- N O T I F I C A T I O N S                                                          -->
+  <!-- ********************************************************************************** -->
+  <!--
+  Notifications are listed here in alphabetical order.
+  The non-primitive attributes inside the commands are defined in another
+  section of the schema.
+
+  Notifications in this schema file:
+
+    OCIReportingProvisioningTaskReportNotification
+  -->
+
+
+  <xs:complexType name="OCIReportingProvisioningTaskReportNotification">
+   <xs:annotation>
+    <xs:documentation>
+      This notification is sent for tasks like Trunk Group User Creation or Service Pack
+      Migration that change provisioning data without invoking OCI-P requests.     
+    </xs:documentation>
+   </xs:annotation>
+   <xs:complexContent>
+    <xs:extension base="OCIReportingNotification">
+     <xs:sequence>
+      <xs:element name="id" type="OCIReportingProvisioningTaskType"/>
+     </xs:sequence>
+    </xs:extension>
+   </xs:complexContent>
+  </xs:complexType>
+
+
+</xs:schema>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ************************************************************************ -->
+<!-- Copyright (c) 2004-2005 Broadsoft, Inc.  All rights reserved.            -->
+<!-- ************************************************************************ -->
+<!--  O C I   R E P O R T I N G   X M L   S C H E M A  :  D A T A   T Y P E S -->
+<!--                                                                          -->
+<!-- This file defines the XML Schema for the BroadSoft OCI Reporting         -->
+<!-- Interface                                                                -->
+<!-- ************************************************************************ -->
+
+<xs:schema xmlns:xs             = "http://www.w3.org/2001/XMLSchema"
+           xmlns                = ""
+           attributeFormDefault = "unqualified"
+           elementFormDefault   = "unqualified">
+
+  <!-- ******************************************************************** -->
+  <!-- M E S S A G E   P A R A M E T E R S                                  -->
+  <!-- ******************************************************************** -->
+  <!--
+  The non-primitive attributes are listed here in alphabetical order.
+  -->
+
+
+  <xs:simpleType name="OCIReportingAlias">
+    <xs:annotation>
+      <xs:documentation>
+        Alias.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="161"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <xs:simpleType name="OCIReportingId">
+    <xs:annotation>
+      <xs:documentation>
+        An id identifies the successfully executed OCI request being reported.  It is a string that takes the form "write" followed by a positive integer between 0 and 2147483647 inclusive.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:maxLength value="15"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <xs:simpleType name="OCIReportingLoginType">
+    <xs:annotation>
+      <xs:documentation>
+        The login type of an account.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="User"/>
+      <xs:enumeration value="Group Department"/>
+      <xs:enumeration value="Group"/>
+      <xs:enumeration value="Service Provider"/>
+      <xs:enumeration value="Provisioning"/>
+      <xs:enumeration value="System"/>
+      <xs:enumeration value="Not Logged In"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  
+  <xs:simpleType name="OCIReportingProvisioningTaskType">
+    <xs:annotation>
+      <xs:documentation>
+        The indicates which task created changes to Public Identities
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="OCI-P"/>
+      <xs:enumeration value="Trunk Group User Creation"/>
+      <xs:enumeration value="Service Pack Migration"/>
+    </xs:restriction>
+  </xs:simpleType>  
+ 
+ 
+  <xs:simpleType name="OCIReportingSipURI">
+    <xs:annotation>
+      <xs:documentation>
+         A SIP URI
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="161"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+
+  <xs:simpleType name="OCIReportingTelURI">
+    <xs:annotation>
+      <xs:documentation>
+         Directory Number in E164 Format.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="17"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+
+  <xs:simpleType name="OCIReportingUserId">
+    <xs:annotation>
+      <xs:documentation>
+        A user id consists of a user-portion optionally followed by an @ sign and a domain name.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:normalizedString">
+      <xs:maxLength value="161"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+</xs:schema>

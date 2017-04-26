@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="www.tibco.com/plugin/Sleep" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <pd:name>Multi Conditions.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType>
+        <xsd:element name="root" type="xsd:int"/>
+    </pd:startType>
+    <pd:startX>36</pd:startX>
+    <pd:startY>150</pd:startY>
+    <pd:returnBindings/>
+    <pd:endName>End</pd:endName>
+    <pd:endX>727</pd:endX>
+    <pd:endY>174</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables>
+        <Msg>
+            <xsd:element name="root" type="xsd:string"/>
+        </Msg>
+    </pd:processVariables>
+    <pd:targetNamespace>http://xmlns.example.com/1491903896288</pd:targetNamespace>
+    <pd:activity name="one">
+        <pd:type>com.tibco.pe.core.AssignActivity</pd:type>
+        <pd:resourceType>ae.activities.assignActivity</pd:resourceType>
+        <pd:x>448</pd:x>
+        <pd:y>47</pd:y>
+        <config>
+            <variableName>Msg</variableName>
+        </config>
+        <pd:inputBindings>
+            <root>
+                <xsl:value-of select="concat($Msg/root,&quot; - &quot;,&quot;one&quot;)"/>
+            </root>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="two">
+        <pd:type>com.tibco.pe.core.AssignActivity</pd:type>
+        <pd:resourceType>ae.activities.assignActivity</pd:resourceType>
+        <pd:x>448</pd:x>
+        <pd:y>137</pd:y>
+        <config>
+            <variableName>Msg</variableName>
+        </config>
+        <pd:inputBindings>
+            <root>
+                <xsl:value-of select="concat($Msg/root,&quot; - &quot;,&quot;two&quot;)"/>
+            </root>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Null">
+        <pd:type>com.tibco.plugin.timer.NullActivity</pd:type>
+        <pd:resourceType>ae.activities.null</pd:resourceType>
+        <pd:x>476</pd:x>
+        <pd:y>218</pd:y>
+        <config/>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:activity name="three">
+        <pd:type>com.tibco.pe.core.AssignActivity</pd:type>
+        <pd:resourceType>ae.activities.assignActivity</pd:resourceType>
+        <pd:x>478</pd:x>
+        <pd:y>316</pd:y>
+        <config>
+            <variableName>Msg</variableName>
+        </config>
+        <pd:inputBindings>
+            <root>
+                <xsl:value-of select="concat($Msg/root,&quot; - &quot;,&quot;three&quot;)"/>
+            </root>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="helo">
+        <pd:type>com.tibco.pe.core.AssignActivity</pd:type>
+        <pd:resourceType>ae.activities.assignActivity</pd:resourceType>
+        <pd:x>579</pd:x>
+        <pd:y>46</pd:y>
+        <config>
+            <variableName>Msg</variableName>
+        </config>
+        <pd:inputBindings>
+            <root>
+                <xsl:value-of select="concat($Msg/root,&quot; - &quot;,&quot;helo&quot;)"/>
+            </root>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="byebye">
+        <pd:type>com.tibco.pe.core.AssignActivity</pd:type>
+        <pd:resourceType>ae.activities.assignActivity</pd:resourceType>
+        <pd:x>594</pd:x>
+        <pd:y>257</pd:y>
+        <config>
+            <variableName>Msg</variableName>
+        </config>
+        <pd:inputBindings>
+            <root>
+                <xsl:value-of select="concat($Msg/root,&quot; - &quot;,&quot;byebye&quot;)"/>
+            </root>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Sleep">
+        <pd:type>com.tibco.plugin.timer.SleepActivity</pd:type>
+        <pd:resourceType>ae.activities.sleep</pd:resourceType>
+        <pd:x>189</pd:x>
+        <pd:y>295</pd:y>
+        <config/>
+        <pd:inputBindings>
+            <ns:SleepInputSchema>
+                <IntervalInMillisec>
+                    <xsl:value-of select="2000"/>
+                </IntervalInMillisec>
+            </ns:SleepInputSchema>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Sleep-1">
+        <pd:type>com.tibco.plugin.timer.SleepActivity</pd:type>
+        <pd:resourceType>ae.activities.sleep</pd:resourceType>
+        <pd:x>215</pd:x>
+        <pd:y>55</pd:y>
+        <config/>
+        <pd:inputBindings>
+            <ns:SleepInputSchema>
+                <IntervalInMillisec>
+                    <xsl:value-of select="1000"/>
+                </IntervalInMillisec>
+            </ns:SleepInputSchema>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Sleep-2">
+        <pd:type>com.tibco.plugin.timer.SleepActivity</pd:type>
+        <pd:resourceType>ae.activities.sleep</pd:resourceType>
+        <pd:x>276</pd:x>
+        <pd:y>122</pd:y>
+        <config/>
+        <pd:inputBindings>
+            <ns:SleepInputSchema>
+                <IntervalInMillisec>
+                    <xsl:value-of select="3000"/>
+                </IntervalInMillisec>
+            </ns:SleepInputSchema>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>one</pd:from>
+        <pd:to>helo</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Null</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>otherwise</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Sleep-2</pd:to>
+        <pd:xpathDescription>&gt;3 &gt; 4</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/root &gt; 3 and $Start/root &gt; 4</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>helo</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>byebye</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>three</pd:from>
+        <pd:to>byebye</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>two</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Sleep</pd:to>
+        <pd:xpathDescription>&gt;2 &gt;3 &gt;4</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/root &gt; 2 and $Start/root &gt; 3 and $Start/root &gt; 4</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Sleep-1</pd:to>
+        <pd:xpathDescription>&gt;2</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/root &gt; 2</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Sleep</pd:from>
+        <pd:to>three</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Sleep-1</pd:from>
+        <pd:to>one</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Sleep-2</pd:from>
+        <pd:to>two</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

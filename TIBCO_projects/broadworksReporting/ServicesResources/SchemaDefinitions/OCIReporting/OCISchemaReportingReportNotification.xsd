@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ************************************************************************* -->
+<!-- Copyright (c) 2004-2005 Broadsoft, Inc.  All rights reserved.             -->
+<!-- ************************************************************************* -->
+<!-- O C I   R E P O R T I N G   X M L   S C H E M A                           -->
+<!--                                                                           -->
+<!-- R E P O R T   N O T I F I C A T I O N                                     -->
+<!--                                                                           -->
+<!-- This file defines the XML Schema for the BroadSoft OCI Reporting          -->
+<!-- Interface                                                                 -->
+<!-- ************************************************************************* -->
+
+<xs:schema xmlns:xs             = "http://www.w3.org/2001/XMLSchema"
+           xmlns                = ""
+           attributeFormDefault = "unqualified"
+           elementFormDefault   = "unqualified">
+
+  <!-- ********************************************************************************** -->
+  <!-- N O T I F I C A T I O N S                                                          -->
+  <!-- ********************************************************************************** -->
+  <!--
+  Notifications are listed here in alphabetical order.
+  The non-primitive attributes inside the commands are defined in another
+  section of the schema.
+
+  Notifications in this schema file:
+
+    OCIReportingReportNotification
+  -->
+
+
+  <xs:complexType name="OCIReportingReportNotification">
+    <xs:annotation>
+      <xs:documentation>
+        Indicates to an external system that an OCI modification request (add, delete, modify, etc.) 
+        was successfully processed.  There is no response to this command.  The userId and login type 
+        of the account that enacted this modification are included.  The request's serialized XML 
+        document is included in the request element.  In most cases, the serialized XML is exactly 
+        as received over the OCI interface.  Exceptions to this rule are requests that contain media 
+        file contents, conferencing document contents, and passwords.  If these data are altered, 
+        the isAltered element is included to indicate so.  An identification is also included.  
+        This takes on the form of "write" followed by a positive integer.  The number is incremented 
+        for each successfully processed OCI modification request.
+        If the OCI request generates an ErrorResponse of type Warning or Info, the warningMessage 
+        element contains the ErrorResponse summary. The presence of the warningMessage element 
+        indicates partial success. When this occurs, the request changed some data for a request but 
+        not all as would be expected on a fully successful request. The warningMessage element 
+        describes what might not have been completed successfully by the request.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="OCIReportingNotification">
+        <xs:sequence>
+          <xs:element name="id" type="OCIReportingId"/>
+          <xs:element name="userId" type="OCIReportingUserId"/>
+          <xs:element name="loginType" type="OCIReportingLoginType"/>
+          <xs:element name="request" type="xs:string"/>
+          <xs:element name="isAltered" type="xs:boolean" fixed="true" minOccurs="0"/>
+          <xs:element name="warningMessage" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+
+</xs:schema>

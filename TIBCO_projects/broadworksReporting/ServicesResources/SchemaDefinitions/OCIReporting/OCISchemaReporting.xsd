@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ************************************************************************* -->
+<!-- Copyright (c) 2004-2005 Broadsoft, Inc.  All rights reserved.             -->
+<!-- ************************************************************************* -->
+<!--                 O C I   R E P O R T I N G   X M L   S C H E M A           -->
+<!--                                                                           -->
+<!-- This file defines the XML Schema for the BroadSoft OCIReporting Interface -->
+<!-- ************************************************************************* -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 elementFormDefault="unqualified"
+	 attributeFormDefault="unqualified">
+
+	<!-- *********************************************************************** -->
+	<!-- N A M I N G   C O N V E N T I O N S                                     -->
+	<!-- *********************************************************************** -->
+	<!--
+  Commands:
+    (OCIReporting)Object[Aspect](Notification)
+
+  -->
+	<xs:include schemaLocation="OCISchemaReportingBASE.xsd"/>
+	<xs:include schemaLocation="OCISchemaReportingDataTypes.xsd"/>
+	<xs:include schemaLocation="OCISchemaReportingServerStatusNotification.xsd"/>
+	<xs:include schemaLocation="OCISchemaReportingReportNotification.xsd"/>
+	<xs:include schemaLocation="OCISchemaReportingReportPublicIdentityNotification.xsd"/>
+	<xs:include schemaLocation="OCISchemaReportingProvisioningTaskNotification.xsd"/>
+</xs:schema>

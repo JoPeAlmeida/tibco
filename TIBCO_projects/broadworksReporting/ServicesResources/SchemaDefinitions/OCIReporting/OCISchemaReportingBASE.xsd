@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ********************************************************************** -->
+<!-- Copyright (c) 2004-2005 Broadsoft, Inc.  All rights reserved.                -->
+<!-- **************************************************************************** -->
+<!--       O C I   R E P O R T I N G   X M L   S C H E M A  :  B A S E   P A R T  -->
+<!--                                                                              -->
+<!-- This file defines the XML Schema for the BroadSoft OCI Reporting Interface   -->
+<!-- **************************************************************************** -->
+
+<xs:schema xmlns:xs             = "http://www.w3.org/2001/XMLSchema"
+           xmlns                = ""
+           attributeFormDefault = "unqualified"
+           elementFormDefault   = "unqualified">
+
+
+  <!-- ******************************************************************** -->
+  <!-- B A S E   M E S S A G E   T Y P E S                                  -->
+  <!-- ******************************************************************** -->
+  <!--
+  The following types define the core elements of the messaging protocol.
+  Each message contains a list of reporting notification commands.
+  -->
+
+  <xs:element name="BroadsoftOCIReportingDocument" type="OCIReportingMessage">
+    <xs:annotation>
+      <xs:documentation>Every Message starts with a BroadsoftDocument tag.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+
+  <xs:complexType name="OCIReportingMessage">
+    <xs:annotation>
+      <xs:documentation>
+        A message contains a command.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="command" type="OCIReportingCommand" minOccurs="1"
+         maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>The command being pushed to external systems.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+
+    <xs:attribute name="protocol" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:NMTOKEN">
+          <xs:enumeration value="OCIReporting"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+
+  </xs:complexType>
+
+
+  <xs:complexType name="OCIReportingCommand" abstract="true">
+    <xs:annotation>
+      <xs:documentation>
+        The OCIReportingCommand is an abstract type from which all notifications are derived.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <xs:complexType name="OCIReportingNotification" abstract="true">
+    <xs:annotation>
+      <xs:documentation>
+        The OCIReportingNotification is an abstract type.  Responses are not expected for notifications.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="OCIReportingCommand">
+        <xs:sequence>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+
+</xs:schema>

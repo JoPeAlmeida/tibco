@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <pd:name>ReceiveEmail.process</pd:name>
+    <pd:startName>Receive Mail</pd:startName>
+    <pd:startX>0</pd:startX>
+    <pd:startY>0</pd:startY>
+    <pd:returnBindings/>
+    <pd:starter name="Receive Mail">
+        <pd:type>com.tibco.plugin.mail.MailEventSource</pd:type>
+        <pd:resourceType>ae.activities.MailEventSourceResource</pd:resourceType>
+        <pd:x>152</pd:x>
+        <pd:y>65</pd:y>
+        <config>
+            <pollinginterval>5</pollinginterval>
+            <newMimeSupport>true</newMimeSupport>
+            <inputOutputVersion>5.2.0</inputOutputVersion>
+            <host>pop.gmail.com:995</host>
+            <username>joaopedrolealalmeida</username>
+            <password>96d4a95c</password>
+            <useSsl>false</useSsl>
+            <ns0:ssl xmlns:ns0="http://www.tibco.com/xmlns/aemeta/services/2002">
+                <ns0:strongCipherSuitesOnly>true</ns0:strongCipherSuitesOnly>
+                <ns0:cert isRef="true">/broadworksReporting/.folder</ns0:cert>
+                <ns0:verifyHostName>true</ns0:verifyHostName>
+            </ns0:ssl>
+            <OutputHeaders>
+                <xsd:element name="root">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="Content-Type" type="xsd:string" minOccurs="0"/>
+                            <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="skip"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </OutputHeaders>
+        </config>
+        <pd:inputBindings/>
+    </pd:starter>
+    <pd:endName>End</pd:endName>
+    <pd:endX>450</pd:endX>
+    <pd:endY>64</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1491579578875</pd:targetNamespace>
+    <pd:transition>
+        <pd:from>Receive Mail</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>
